@@ -172,11 +172,12 @@ function parse_args()
             ;;
         esac
     done
-    
-    if [[ ! -z $new_process_list ]]; then
-        AUX_PROCESS_NAME=("${new_process_list[@]}")                  # copying an array has a strange syntax in Bash!!!
-        NUM_PROCESSES=${#AUX_PROCESS_NAME[@]}
-        #echo "NUM_PROCESSES is $NUM_PROCESSES"
+    if [ -n "${new_process_list:-}" ]; then
+        if [[ ! -z $new_process_list ]]; then
+            AUX_PROCESS_NAME=("${new_process_list[@]}")                  # copying an array has a strange syntax in Bash!!!
+            NUM_PROCESSES=${#AUX_PROCESS_NAME[@]}
+            #echo "NUM_PROCESSES is $NUM_PROCESSES"
+        fi
     fi
 }
 
